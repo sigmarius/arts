@@ -15,6 +15,11 @@ gulp.task("copy-html", () => {
                 .pipe(browsersync.stream());
 });
 
+gulp.task("copy-readme", () => {
+    return gulp.src(".README.md")
+                .pipe(gulp.dest(dist));
+});
+
 gulp.task("build-js", () => {
     return gulp.src("./src/js/main.js")
                 .pipe(webpack({
@@ -96,6 +101,7 @@ gulp.task("build-prod-js", () => {
 });
 
 function deploy(cb) {
+  gulp.task("copy-readme");
   ghPages.publish(path.join(process.cwd(), './dist'), cb);
 }
 exports.deploy = deploy;
