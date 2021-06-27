@@ -16,7 +16,7 @@ gulp.task("copy-html", () => {
 });
 
 gulp.task("copy-readme", () => {
-    return gulp.src(".README.md")
+    return gulp.src("README.md")
                 .pipe(gulp.dest(dist));
 });
 
@@ -70,7 +70,7 @@ gulp.task("watch", () => {
     gulp.watch("./src/js/**/*.js", gulp.parallel("build-js"));
 });
 
-gulp.task("build", gulp.parallel("copy-html", "copy-assets", "build-js"));
+gulp.task("build", gulp.parallel("copy-html", "copy-assets", "copy-readme", "build-js"));
 
 gulp.task("build-prod-js", () => {
     return gulp.src("./src/js/main.js")
@@ -101,7 +101,6 @@ gulp.task("build-prod-js", () => {
 });
 
 function deploy(cb) {
-  gulp.task("copy-readme");
   ghPages.publish(path.join(process.cwd(), './dist'), cb);
 }
 exports.deploy = deploy;
