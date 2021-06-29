@@ -1,10 +1,12 @@
 const validateInputs = (selector) => {
-    const numberInputs = document.querySelectorAll(selector);
+    const txtInputs = document.querySelectorAll(selector);
 
-    numberInputs.forEach(item => {
-        item.addEventListener('input', () => {
-            // ищем все, что не является цифрами
-            item.value = item.value.replace(/\D/, '');
+   txtInputs.forEach(item => {
+        item.addEventListener('keypress', (evt) => {
+            // ищем глобально все русские буквы и цифры
+            if (evt.key.match(/[^а-яё 0-9]/ig)) {
+                evt.preventDefault();
+            }
         });
     });
 };
