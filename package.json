@@ -26,6 +26,7 @@
     "webpack-stream": "^5.2.1"
   },
   "dependencies": {
-    "jshint": "^2.13.0"
+    "jshint": "^2.13.0",
+    "json-server": "^0.16.3"
   }
 }

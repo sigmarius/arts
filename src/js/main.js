@@ -3,7 +3,9 @@ import sliders from "./modules/sliders";
 import forms from "./modules/forms";
 import mask from "./modules/mask";
 import validateInputs from "./modules/validate";
+// подгрузка элементов из верстки
 import showMoreStyles from "./modules/showMoreStyles";
+import loadFromServer from "./modules/loadFromServer";
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -15,5 +17,10 @@ window.addEventListener('DOMContentLoaded', () => {
     mask('[name="phone"]');
     validateInputs('[name="name"]');
     validateInputs('[name="message"]');
-    showMoreStyles('.button-styles', '.styles-2');
+
+    // подгрузка элементов из верстки
+    // showMoreStyles('.button-styles', '.styles-2');
+
+    // подгрузка элементов с сервера db.json
+    loadFromServer('.button-styles', '#styles .row');
 });
