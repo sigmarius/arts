@@ -8,6 +8,7 @@ import showMoreStyles from "./modules/showMoreStyles";
 import loadFromServer from "./modules/loadFromServer";
 import calc from "./modules/calc";
 import filter from "./modules/filter";
+import pictureSize from "./modules/pictureSize";
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -25,6 +26,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // подгрузка элементов с сервера db.json
     loadFromServer('.button-styles', '#styles .row');
+    
     calc('#size', '#material', '#options', '.promocode', '.calc-price');
     filter();
+    pictureSize('.sizes-block');
 });
