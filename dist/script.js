@@ -4441,7 +4441,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_calc__WEBPACK_IMPORTED_MODULE_7__["default"])('#size', '#material', '#options', '.promocode', '.calc-price');
   Object(_modules_filter__WEBPACK_IMPORTED_MODULE_8__["default"])();
   Object(_modules_pictureSize__WEBPACK_IMPORTED_MODULE_9__["default"])('.sizes-block');
-  Object(_modules_accordion__WEBPACK_IMPORTED_MODULE_10__["default"])('.accordion-heading', '.accordion-block');
+  Object(_modules_accordion__WEBPACK_IMPORTED_MODULE_10__["default"])('.accordion-heading');
 });
 
 /***/ }),
@@ -4459,22 +4459,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
 
 
-var accordion = function accordion(triggersSelector, itemsSelector) {
-  var btns = document.querySelectorAll(triggersSelector),
-      blocks = document.querySelectorAll(itemsSelector);
-  blocks.forEach(function (block) {
-    block.classList.add('animated', 'fadeInDown');
-  });
+var accordion = function accordion(triggersSelector) {
+  var btns = document.querySelectorAll(triggersSelector);
   btns.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      if (!this.classList.contains('active')) {
-        btns.forEach(function (btn) {
-          btn.classList.remove('active', 'active-style');
-        });
-        this.classList.add('active', 'active-style');
+      this.classList.toggle('active-style');
+      this.nextElementSibling.classList.toggle('active-content');
+
+      if (this.classList.contains('active-style')) {
+        // scrollHeight - высота контента, который содержится внутри элемента + padding (80px)
+        this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + 80 + 'px';
+      } else {
+        this.nextElementSibling.style.maxHeight = '0px';
       }
     });
-  });
+  }); // задействованы CSS-стили  
+  // blocks = document.querySelectorAll(itemsSelector);
+  // blocks.forEach(block => {
+  //     block.classList.add('animated', 'fadeInDown');
+  // });
+  // btns.forEach(btn => {
+  //     btn.addEventListener('click', function() {
+  //         if (!this.classList.contains('active')) {
+  //             btns.forEach(btn => {
+  //                 btn.classList.remove('active', 'active-style');
+  //             });
+  //             this.classList.add('active', 'active-style');
+  //         }
+  //     });
+  // });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (accordion);
