@@ -15,6 +15,7 @@ import burger from "./modules/burger";
 // скролинг на чистом JS
 import scrolling from "./modules/scrolling";
 import requestAnimation from "./modules/requestAnimation";
+import drop from "./modules/drop";
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -41,4 +42,5 @@ window.addEventListener('DOMContentLoaded', () => {
     // скролинг на чистом JS
     // scrolling('.pageup');
     requestAnimation('.pageup');
+    drop();
 });
